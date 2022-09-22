@@ -1,0 +1,5 @@
+export const SECRET = {
+  "clientId": "",
+  "guildId": "",
+  "token": ""
+};
