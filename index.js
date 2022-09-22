@@ -29,16 +29,17 @@ async function init() {
 
   client.on('interactionCreate', async (interaction) => {
 
-    if (!ALLOWED_CHANNELS.includes(interaction.channel.id)) {
-      await interaction.reply({ content: 'Not allowed in this channel.', ephemeral: true })
-    }
-
     if (interaction.isButton()) {
       await subsequentSteps(interaction)
       return
     }
 
     if (interaction.isChatInputCommand()) {
+      if (!ALLOWED_CHANNELS.includes(interaction.channel.id)) {
+        await interaction.reply({ content: 'Not allowed in this channel.', ephemeral: true })
+        return
+      }
+
       if (interaction.commandName === 'pick') {
         try {
           await firstStep(interaction)
