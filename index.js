@@ -2,6 +2,7 @@ import { Client, GatewayIntentBits, REST, Routes } from 'discord.js'
 import { SECRET } from './config.js'
 import Commands from './commands.js'
 import { firstStep, subsequentSteps } from './picker.js'
+import { ALLOWED_CHANNELS } from './constants.js'
 
 async function initCommands() {
   const rest = new REST({ version: '10' }).setToken(SECRET.token)
@@ -27,6 +28,11 @@ async function init() {
   });
 
   client.on('interactionCreate', async (interaction) => {
+
+    if (!ALLOWED_CHANNELS.includes(interaction.channel.id)) {
+      await interaction.reply({ content: 'Not allowed in this channel.', ephemeral: true })
+    }
+
     if (interaction.isButton()) {
       await subsequentSteps(interaction)
       return
@@ -40,7 +46,7 @@ async function init() {
             console.warn(error);
           }
       } else {
-        await interaction.reply('Unknown command.')
+        await interaction.reply({ content: 'Unknown command.', ephemeral: true })
       }
     }
 

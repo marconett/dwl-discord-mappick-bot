@@ -31,3 +31,7 @@ export const WINNER_LOSER_ORDER = [
  'loser',
  'winner',
 ];
+
+export const ALLOWED_CHANNELS = [
+  '1000695396105998366'
+];

@@ -7,14 +7,14 @@ export async function firstStep(interaction) {
   const opponentUser = interaction.options.getUser('opponent')
 
   if (opponentUser.id === startingUser.id || opponentUser.bot) {
-    await interaction.reply({ content: 'you can\'t pick maps with yourself or a bot', ephemeral: true })
+    await interaction.reply({ content: 'You can\'t pick maps with yourself or a bot.', ephemeral: true })
     return
   }
 
   const foundSession = store.sessions.find(session => (session.step !== 9 && (session.winner.id === startingUser.id || session.winner.id === opponentUser.id) && (session.loser.id === startingUser.id || session.loser.id === opponentUser.id)))
 
   if (foundSession) {
-    await interaction.reply({ content: 'there\'s already a pick/ban process between you two', ephemeral: true })
+    await interaction.reply({ content: 'There\'s already an open pick/ban process between you two.', ephemeral: true })
     return
   }
 
@@ -49,7 +49,7 @@ export async function subsequentSteps(interaction) {
     const data = JSON.parse(interaction.customId)
 
     if (interaction.user.id !== data.uid) {
-      await interaction.reply({ content: 'it\'s not your turn ...', ephemeral: true })
+      await interaction.reply({ content: 'It\'s not your turn ...', ephemeral: true })
       return
     }
 
