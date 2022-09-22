@@ -7,16 +7,12 @@ async function initCommands() {
   const rest = new REST({ version: '10' }).setToken(SECRET.token)
 
   try {
-    // delete all existing guild-based commands
-    await rest.put(Routes.applicationGuildCommands(SECRET.clientId, SECRET.guildId), { body: [] })
-    console.log('Successfully deleted all guild commands.')
-
     // delete all existing global commands
     await rest.put(Routes.applicationCommands(SECRET.clientId), { body: [] })
     console.log('Successfully deleted all application commands.')
 
-    // create commands
-    await rest.put(Routes.applicationGuildCommands(SECRET.clientId, SECRET.guildId), { body: Commands })
+    // create global commands
+    await rest.put(Routes.applicationCommands(SECRET.clientId), { body: Commands })
     console.log('Successfully reloaded application (/) commands.')
   } catch (error) {
     console.warn(error)
