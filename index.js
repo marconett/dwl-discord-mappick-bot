@@ -36,7 +36,7 @@ async function init() {
 
     if (interaction.isChatInputCommand()) {
       if (!ALLOWED_CHANNELS.includes(interaction.channel.id)) {
-        await interaction.reply({ content: 'Not allowed in this channel.', ephemeral: true })
+        await interaction.reply({ content: 'Not allowed in this channel, this bot only works in #match-lobby channels.', ephemeral: true })
         return
       }
 
