@@ -1,6 +1,14 @@
 import { ButtonStyle } from 'discord.js';
 import { deepCopy } from './utils.js';
-import { MAPS, PICK_BAN_ORDER, WINNER_LOSER_ORDER } from './constants.js';
+import {
+  MAPS,
+  PICK_BAN_ORDER_3,
+  PICK_BAN_ORDER_5,
+  PICK_BAN_ORDER_7,
+  WINNER_LOSER_ORDER_3,
+  WINNER_LOSER_ORDER_5,
+  WINNER_LOSER_ORDER_7,
+} from './constants.js';
 
 export default class Session {
   id = null;
@@ -9,23 +17,36 @@ export default class Session {
   winner = null;
   loser = null;
   step = 1;
+  pickBanOrder = PICK_BAN_ORDER_3;
+  winnerLoserOrder = WINNER_LOSER_ORDER_3;
 
   remainingMaps = deepCopy(MAPS);
 
   picks = [];
   bans = [];
 
-  constructor(thread, winner, loser) {
+  constructor(thread, winner, loser, bo) {
     this.id = thread.id;
     this.thread = thread;
     this.winner = winner;
     this.loser = loser;
+    this.bo = bo;
+
+    if (bo === 5) {
+      this.pickBanOrder = PICK_BAN_ORDER_5;
+      this.winnerLoserOrder = WINNER_LOSER_ORDER_5;
+    }
+
+    if (bo === 7) {
+      this.pickBanOrder = PICK_BAN_ORDER_7;
+      this.winnerLoserOrder = WINNER_LOSER_ORDER_7;
+    }
   }
 
   pickBan(mapId) {
     const chosenMap = this.remainingMaps.find(map => map.id === mapId)
 
-    if (PICK_BAN_ORDER[this.step-1] === 'pick') {
+    if (this.pickBanOrder[this.step-1] === 'pick') {
       this.picks.push(chosenMap)
     } else {
       this.bans.push(chosenMap)
@@ -41,7 +62,7 @@ export default class Session {
   }
 
   getCurrentPlayer() {
-    if (WINNER_LOSER_ORDER[this.step-1] === 'loser') {
+    if (this.winnerLoserOrder[this.step-1] === 'loser') {
       return this.loser
     }
 
@@ -49,7 +70,7 @@ export default class Session {
   }
 
   getCurrentPickBanString() {
-    if (PICK_BAN_ORDER[this.step-1] === 'pick') {
+    if (this.pickBanOrder[this.step-1] === 'pick') {
       return 'pick'
     }
 
@@ -61,7 +82,7 @@ export default class Session {
 
     let style = ButtonStyle.Danger
 
-    if (PICK_BAN_ORDER[this.step-1] === 'pick') {
+    if (this.pickBanOrder[this.step-1] === 'pick') {
       style = ButtonStyle.Success
     }
 

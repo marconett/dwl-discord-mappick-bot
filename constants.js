@@ -10,7 +10,7 @@ export const MAPS = [
   { id: 8, name: 'Forty Two' },
 ];
 
-export const PICK_BAN_ORDER = [
+export const PICK_BAN_ORDER_3 = [
  'ban',
  'ban',
  'pick',
@@ -21,13 +21,57 @@ export const PICK_BAN_ORDER = [
  'ban',
 ];
 
-export const WINNER_LOSER_ORDER = [
+export const WINNER_LOSER_ORDER_3 = [
  'loser',
  'winner',
  'winner',
  'loser',
  'loser',
  'winner',
+ 'loser',
+ 'winner',
+];
+
+export const PICK_BAN_ORDER_5 = [
+ 'ban',
+ 'ban',
+ 'pick',
+ 'pick',
+ 'pick',
+ 'pick',
+ 'ban',
+ 'ban',
+];
+
+export const WINNER_LOSER_ORDER_5 = [
+ 'loser',
+ 'winner',
+ 'loser',
+ 'winner',
+ 'loser',
+ 'winner',
+ 'loser',
+ 'winner',
+];
+
+export const PICK_BAN_ORDER_7 = [
+ 'ban',
+ 'pick',
+ 'pick',
+ 'pick',
+ 'pick',
+ 'pick',
+ 'ban',
+ 'ban',
+];
+
+export const WINNER_LOSER_ORDER_7 = [
+ 'winner',
+ 'loser',
+ 'winner',
+ 'loser',
+ 'winner',
+ 'loser',
  'loser',
  'winner',
 ];
