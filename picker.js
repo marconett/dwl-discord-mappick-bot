@@ -2,15 +2,27 @@ import Session from './Session.js';
 import store from './store.js';
 import {
   MAPS,
+  PICK_BAN_ORDER_3,
+  PICK_BAN_ORDER_5,
+  PICK_BAN_ORDER_7,
   WINNER_LOSER_ORDER_3,
   WINNER_LOSER_ORDER_5,
   WINNER_LOSER_ORDER_7,
 } from './constants.js';
 
 export async function firstStep(interaction, bo) {
+  let startingpickBanType = PICK_BAN_ORDER_3[0]
   let startingUserType = WINNER_LOSER_ORDER_3[0]
-  if (bo === 5) startingUserType = WINNER_LOSER_ORDER_5[0]
-  if (bo === 7) startingUserType = WINNER_LOSER_ORDER_7[0]
+
+  if (bo === 5) {
+    startingpickBanType = PICK_BAN_ORDER_5[0]
+    startingUserType = WINNER_LOSER_ORDER_5[0]
+  }
+
+  if (bo === 7) {
+    startingpickBanType = PICK_BAN_ORDER_7[0]
+    startingUserType = WINNER_LOSER_ORDER_7[0]
+  }
 
   const startingUser = interaction.user
   const opponentUser = interaction.options.getUser('opponent')
@@ -64,7 +76,7 @@ export async function firstStep(interaction, bo) {
   store.sessions.push(session)
 
   const firstMsgUser = (startingUserType === 'winner') ? winningUser : losingUser
-  await thread.send({ content: `${firstMsgUser}, please **ban** a map:`, components: session.getCurrentButtons() });
+  await thread.send({ content: `${firstMsgUser}, please **${startingpickBanType}** a map:`, components: session.getCurrentButtons() });
 }
 
 
