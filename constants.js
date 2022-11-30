@@ -77,6 +77,9 @@ export const WINNER_LOSER_ORDER_7 = [
 ];
 
 export const ALLOWED_CHANNELS = [
-  '1000695396105998366',
-  '822554189090521098'
+  '1000695396105998366', // hst test
+  '822554189090521098', // dwl admin
+  '1023950167629647977', // dwl match lobby masters
+  '819008570179452948', // dwl match lobby open
+  '819008397985841222', // dwl masters
 ];
