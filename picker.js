@@ -107,7 +107,7 @@ export async function subsequentSteps(interaction) {
 
     if (foundSession.remainingMaps.length === 0) {
       const mapsString = foundSession.picks.map((m, i) => (i+1).toString() + '. ' + m['name']).join('\n')
-      await foundSession.thread.send({ content: `\n**Maps to play:\n------\n${mapsString}\n------**\n${bo7Notice}Please post the lobby key into this thread.\n*GL HF*` })
+      await foundSession.thread.send({ content: `\n**Maps to play:\n------\n${mapsString}\n------**\n${bo7Notice}Please post the lobby key into this thread.\n\n**After the match: Winner needs to report result in #match-ids channel.**\n\n*GL HF*` })
     } else {
       await foundSession.thread.send({ content: `${foundSession.getCurrentPlayer()}, please **${foundSession.getCurrentPickBanString()}** a map:`, components: foundSession.getCurrentButtons() })
     }
