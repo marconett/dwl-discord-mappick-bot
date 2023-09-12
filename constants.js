@@ -1,14 +1,15 @@
 export const MAPS = [
-  { id: 0, name: 'Wellspring' },
-  { id: 1, name: 'Furnace' },
-  { id: 2, name: 'Toya Fortress' },
-  { id: 3, name: 'Habibi' },
-  { id: 4, name: 'Caliburn' },
-  { id: 5, name: 'Arcol' },
-  { id: 6, name: 'Neon' },
-  { id: 7, name: 'Melting Point' },
-  { id: 8, name: 'Forty Two' },
+  { id: 0, name: 'Ancient' },
+  { id: 1, name: 'Arcol' },
+  { id: 2, name: 'Caliburn' },
+  { id: 3, name: 'Furnace' },
+  { id: 4, name: 'Habibi' },
+  { id: 5, name: 'Neon Soul' },
+  { id: 6, name: 'Sunken' },
+  { id: 7, name: 'Toya Fortress' },
+  { id: 8, name: 'Insanatorium' },
 ];
+
 
 export const PICK_BAN_ORDER_3 = [
  'ban',
@@ -81,5 +82,4 @@ export const ALLOWED_CHANNELS = [
   '822554189090521098', // dwl admin
   '1023950167629647977', // dwl match lobby masters
   '819008570179452948', // dwl match lobby open
-  '819008397985841222', // dwl masters
 ];
