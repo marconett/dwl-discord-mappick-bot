@@ -3,7 +3,19 @@ const commands = [];
 commands.push(
   {
     name: 'pick',
-    description: 'Start BO3 pick/ban map selection for a DWL match.',
+    description: 'Start BO1 pick/ban map selection.',
+    options: [
+      {
+        type: 6,
+        name: 'opponent',
+        description: 'Who to pick/ban with.',
+        required: true
+      }
+    ],
+  },
+  {
+    name: 'pick1',
+    description: 'Start BO1 pick/ban map selection.',
     options: [
       {
         type: 6,
@@ -15,7 +27,7 @@ commands.push(
   },
   {
     name: 'pick3',
-    description: 'Start BO3 pick/ban map selection for a DWL match.',
+    description: 'Start BO3 pick/ban map selection',
     options: [
       {
         type: 6,
@@ -27,24 +39,12 @@ commands.push(
   },
   {
     name: 'pick5',
-    description: 'Start BO5 pick/ban map selection for DWL playoffs.',
+    description: 'Start BO5 pick/ban map selection.',
     options: [
       {
         type: 6,
         name: 'opponent',
         description: 'Who to pick/ban with.',
-        required: true
-      }
-    ],
-  },
-  {
-    name: 'pick7',
-    description: 'Start BO7 pick/ban map selection for Grand Finals. Only for the upper bracket winner!',
-    options: [
-      {
-        type: 6,
-        name: 'opponent',
-        description: 'The Lower bracket winner.',
         required: true
       }
     ],
