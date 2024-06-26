@@ -47,7 +47,7 @@ export async function firstStep(interaction, bo) {
   } else {
     const foundSession = store.sessions.find(session => {
       // if the session is not done AND there's no session between the users with the selected bo
-      return (session.step !== 7 && (((session.winner.id === startingUser.id || session.winner.id === opponentUser.id) && (session.loser.id === startingUser.id || session.loser.id === opponentUser.id)) && session.bo === bo))
+      return (session.step !== (MAPS.length+1) && (((session.winner.id === startingUser.id || session.winner.id === opponentUser.id) && (session.loser.id === startingUser.id || session.loser.id === opponentUser.id)) && session.bo === bo))
     })
 
     if (foundSession) {
