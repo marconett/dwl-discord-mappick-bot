@@ -55,7 +55,7 @@ export default class Session {
     this.remainingMaps = this.remainingMaps.filter(map => map.id !== mapId)
     this.step++
 
-    if (this.step === 7) {
+    if (this.step === MAPS.length+1) {
       this.picks = [ ...this.picks, ...this.remainingMaps ]
       this.remainingMaps = []
     }
