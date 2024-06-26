@@ -3,7 +3,7 @@ const commands = [];
 commands.push(
   {
     name: 'pick',
-    description: 'Start BO1 pick/ban map selection.',
+    description: 'Start BO3 pick/ban map selection.',
     options: [
       {
         type: 6,

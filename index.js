@@ -41,8 +41,8 @@ async function init() {
       }
 
       if (interaction.commandName === 'pick' || interaction.commandName === 'pick1' || interaction.commandName === 'pick3' || interaction.commandName === 'pick5') {
-        let bo = 1
-        if (interaction.commandName === 'pick3') bo = 3
+        let bo = 3
+        if (interaction.commandName === 'pick1') bo = 1
         if (interaction.commandName === 'pick5') bo = 5
 
         try {
