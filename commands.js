@@ -26,6 +26,18 @@ commands.push(
     ],
   },
   {
+    name: 'pick2',
+    description: 'Start 2-map pick/ban map selection.',
+    options: [
+      {
+        type: 6,
+        name: 'opponent',
+        description: 'Who to pick/ban with.',
+        required: true
+      }
+    ],
+  },
+  {
     name: 'pick3',
     description: 'Start BO3 pick/ban map selection',
     options: [

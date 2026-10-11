@@ -3,9 +3,11 @@ import { deepCopy } from './utils.js';
 import {
   MAPS,
   PICK_BAN_ORDER_1,
+  PICK_BAN_ORDER_2,
   PICK_BAN_ORDER_3,
   PICK_BAN_ORDER_5,
   WINNER_LOSER_ORDER_1,
+  WINNER_LOSER_ORDER_2,
   WINNER_LOSER_ORDER_3,
   WINNER_LOSER_ORDER_5,
 } from './constants.js';
@@ -32,6 +34,11 @@ export default class Session {
     this.loser = loser;
     this.bo = bo;
 
+    if (bo === 2) {
+      this.pickBanOrder = PICK_BAN_ORDER_2;
+      this.winnerLoserOrder = WINNER_LOSER_ORDER_2;
+    }
+
     if (bo === 3) {
       this.pickBanOrder = PICK_BAN_ORDER_3;
       this.winnerLoserOrder = WINNER_LOSER_ORDER_3;
@@ -55,8 +62,11 @@ export default class Session {
     this.remainingMaps = this.remainingMaps.filter(map => map.id !== mapId)
     this.step++
 
-    if (this.step === MAPS.length) {
-      this.picks = [ ...this.picks, ...this.remainingMaps ]
+    if (this.step > this.pickBanOrder.length) {
+      if (this.bo !== 2) {
+        this.picks = [ ...this.picks, ...this.remainingMaps ]
+      }
+
       this.remainingMaps = []
     }
   }

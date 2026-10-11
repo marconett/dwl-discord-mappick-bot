@@ -26,6 +26,20 @@ export const WINNER_LOSER_ORDER_1 = [
  'winner',
 ];
 
+export const PICK_BAN_ORDER_2 = [
+ 'ban',
+ 'ban',
+ 'pick',
+ 'pick',
+];
+
+export const WINNER_LOSER_ORDER_2 = [
+ 'winner',
+ 'loser',
+ 'winner',
+ 'loser',
+];
+
 export const PICK_BAN_ORDER_3 = [
  'ban',
  'ban',

@@ -3,9 +3,11 @@ import store from './store.js';
 import {
   MAPS,
   PICK_BAN_ORDER_1,
+  PICK_BAN_ORDER_2,
   PICK_BAN_ORDER_3,
   PICK_BAN_ORDER_5,
   WINNER_LOSER_ORDER_1,
+  WINNER_LOSER_ORDER_2,
   WINNER_LOSER_ORDER_3,
   WINNER_LOSER_ORDER_5,
 } from './constants.js';
@@ -13,6 +15,11 @@ import {
 export async function firstStep(interaction, bo) {
   let startingpickBanType = PICK_BAN_ORDER_1[0]
   let startingUserType = WINNER_LOSER_ORDER_1[0]
+
+  if (bo === 2) {
+    startingpickBanType = PICK_BAN_ORDER_2[0]
+    startingUserType = WINNER_LOSER_ORDER_2[0]
+  }
 
   if (bo === 3) {
     startingpickBanType = PICK_BAN_ORDER_3[0]
@@ -47,7 +54,7 @@ export async function firstStep(interaction, bo) {
   } else {
     const foundSession = store.sessions.find(session => {
       // if the session is not done AND there's no session between the users with the selected bo
-      return (session.step !== (MAPS.length) && (((session.winner.id === startingUser.id || session.winner.id === opponentUser.id) && (session.loser.id === startingUser.id || session.loser.id === opponentUser.id)) && session.bo === bo))
+      return (session.remainingMaps.length !== 0 && (((session.winner.id === startingUser.id || session.winner.id === opponentUser.id) && (session.loser.id === startingUser.id || session.loser.id === opponentUser.id)) && session.bo === bo))
     })
 
     if (foundSession) {
@@ -64,7 +71,7 @@ export async function firstStep(interaction, bo) {
   }
 
   const thread = await initialMessage.startThread({
-    name: `BO${bo}: ${startingUser.username}'s team vs ${opponentUser.username}'s team`,
+    name: `${bo === 2 ? '2 maps' : `BO${bo}`}: ${startingUser.username}'s team vs ${opponentUser.username}'s team`,
     reason: 'Picking maps',
     autoArchiveDuration: 60,
   });
